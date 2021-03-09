@@ -1,23 +1,24 @@
 
 clc;
-clear all;                          %%cleara all previous values in command window
-close all;                          %%closes all previous tabs open
+clear all;                          
+close all;                          
+
 %% given parameters
-d = 4000;                           %%distance between tx and rx in meters
+d = 4000;                           %% distance between tx and rx in meters
 h = 500;                            %% height of BTS tower
-p = pi;                             %%declaring value of pi
-c = 3*10^8;                         %%speed of light
-h1 = 48000;                         %%height from tx antenna to inospheric layer
+p = pi;                             %% declaring value of pi
+c = 3*10^8;                         %% speed of light
+h1 = 48000;                         %% height from tx antenna to inospheric layer
 
 %% finding the path distances from tx to rx
-d1 = 2 * sqrt((d/2)^2 + h^2);       %%distance from tx to rx due to ionsopheric reflection
-d2 = 2 * sqrt((d/2)^2 + h1^2);      %%distance from tx to rx due to ground reflection
+d1 = 2 * sqrt((d/2)^2 + h^2);       %% distance from tx to rx due to ionsopheric reflection
+d2 = 2 * sqrt((d/2)^2 + h1^2);      %% distance from tx to rx due to ground reflection
 
 %% delcaring the step-size, frequnecy and time parameter
-Fs = 250e2;                             %%time samples
-f = 824e6:400:834e6;                    %%Frequency range (taking ss = 250000)
-t = 0:4e-12:0.1e-6;                     %%FM signal
-fs = 1700e6;                            %sampling frequency
+Fs = 250e2;                             %% time samples
+f = 824e6:400:834e6;                    %% Frequency range (taking ss = 250000)
+t = 0:4e-12:0.1e-6;                     %% FM signal
+fs = 1700e6;                            %% sampling frequency
 
 %% input signal
 A = input("Enter the value of amplitude: "); %disp(A)
@@ -25,12 +26,12 @@ w = 2*p*f; %disp(w)
 x = A*cos(w.*t); disp(x); figure(1); subplot(2,2,1); plot(t,x); title("Input Signal");xlabel("Time in seconds"); ylabel("Amplitude");
 
 %% time delay
-u0 = (d/c); u1 = (d1/c); u2 = (d2/c);       %%time delays
+u0 = (d/c); u1 = (d1/c); u2 = (d2/c);       %% time delays
 
 %% calculating the value of alpha
-a0 = 1/d;               %%direct path
-a1 = (1/d1)^2 * 0.9;    %%ground reflected path R = 0.9
-a2 = (1/d2)^2 * 0.5;    %%inospheric reflection R = 0.5  (considering that 50 percent energy will be bouncing back at the receiver
+a0 = 1/d;               %% direct path
+a1 = (1/d1)^2 * 0.9;    %% ground reflected path R = 0.9
+a2 = (1/d2)^2 * 0.5;    %% inospheric reflection R = 0.5  (considering that 50 percent energy will be bouncing back at the receiver
 
 %% outpur signal( direct delay fuction )
 y0 = a0*delayseq(x,u0); 
@@ -68,8 +69,8 @@ figure(2);subplot(2,2,3); plot(Y2); title("Signal 3 (after adding zeros)");xlabe
 figure(2);subplot(2,2,4); plot(Y,'r'); title("Received Signal"); xlabel("Time in seconds"); ylabel("Amplitude");%subplot(2,2,1);plot(y);
 
 %% calculating fft
-fs = 1700e6;                    %sampling frequency, considering fm = 834MHz and fs = 2*fm = 1668 MHz ~ 1700 MHz(approx)
-N = t * fs; %disp(N);            %total number of data acquisition points
+fs = 1700e6;                     %% sampling frequency, considering fm = 834MHz and fs = 2*fm = 1668 MHz ~ 1700 MHz(approx)
+N = t * fs; %disp(N);            %% total number of data acquisition points
 L = length(N); disp(L);
 n = 2^nextpow2(L);
 q = fft(Y,n,2);
