@@ -61,23 +61,10 @@ Y1(length(Y1)+1:maxLength) = 0;
 Y2(length(Y2)+1:maxLength) = 0;
 
 %% receiver signal
-Y = Y0 + Y1 + Y2; disp(Y); figure; plot(Y,'r'); %subplot(2,2,1);plot(y);
+Y = Y0 + Y1 + Y2; % disp(Y); figure; plot(Y,'r'); %subplot(2,2,1);plot(y);
  
 figure(2);subplot(2,2,1); plot(Y0,'m'); title("Signal 1 (after adding zeros)");xlabel("Time in seconds"); ylabel("Amplitude");
 figure(2);subplot(2,2,2); plot(Y1,'g'); title("Signal 2 (after adding zeros)");xlabel("Time in seconds"); ylabel("Amplitude");
 figure(2);subplot(2,2,3); plot(Y2); title("Signal 3 (after adding zeros)");xlabel("Time in seconds"); ylabel("Amplitude");
 figure(2);subplot(2,2,4); plot(Y,'r'); title("Received Signal"); xlabel("Time in seconds"); ylabel("Amplitude");%subplot(2,2,1);plot(y);
-
-%% calculating fft
-fs = 1700e6;                     %% sampling frequency, considering fm = 834MHz and fs = 2*fm = 1668 MHz ~ 1700 MHz(approx)
-N = t * fs; %disp(N);            %% total number of data acquisition points
-L = length(N); disp(L);
-n = 2^nextpow2(L);
-q = fft(Y,n,2);
-delta_f = fs / n; disp(delta_f);
-P2 = abs(q/L);
-P1 = P2(:,1:n/2+1);
-P1(:,2:end-1) = 2*P1(:,2:end-1);
-figure;
-plot(0:delta_f:(fs/2-fs/n),P1(1,1:n/2));
  
