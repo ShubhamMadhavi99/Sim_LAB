@@ -1,7 +1,5 @@
 # Sim_LAB
 **Assignments**
-#pip3 install --index-url https://test.pypi.org/simple/ --no-deps pyMultiSerial
-
 # Assignment_1
 
 Problem Statement:
