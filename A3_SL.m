@@ -1,9 +1,9 @@
 %% PROBLEM STATEMENT
 % Aim: Consider 2-ray model (1 direct path and 1 multipath reflecting from ground) where
 % transmitter and receiver are placed 4000m apart at BTS tower of height 121m. Transmitter and
-% receiver are equipped with Omni directional antennas radiating FMCW signal of 0.1 second
-% window of frequency varying from 824MHz to 834MHz. Consider specular reflection happens at
-% dry ground surface of earth. Derive mathematical expression for received power at receiver
+% receiver are equipped with omni-directional antennas radiating FMCW signal of 0.1 second
+% window of frequency varying from 824MHz to 834MHz. Consider that specular reflection happens at
+% dry ground surface of the earth. Derive mathematical expression for received power at receiver
 % antenna and study effects of multipath fading over estimated power of received signal. Use
 % Nyquist theorem for deciding sampling rate. Refer suitable assumptions to solve above problem.
 
