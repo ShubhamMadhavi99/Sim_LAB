@@ -2,14 +2,6 @@ clc;
 clear all;                          %% Clear all previous values in command window
 close all;                          %% Close all previous tabs open
 
-%% Problem Statement:
-% This MATLAB script simulates a multipath propagation model for a transmitted signal
-% considering three different paths:
-% 1. Direct path
-% 2. Ground-reflected path
-% 3. Ionospheric-reflected path
-% It calculates the time delays, attenuation factors, and performs FFT analysis of the received signal.
-
 %% Given Parameters
 d = 4000;       % Distance between transmitter and receiver in meters
 h = 500;        % Height of BTS tower
